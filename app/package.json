@@ -1,8 +1,8 @@
 {
-  "name" : "barebones",
-  "version" : "0.0.0",
+  "name" : "mundi",
+  "version" : "0.0.1",
    "dependencies" :
-    { 
-        "newrelic" : "*" 
+    {
+        "formidable" : "*"
     }
 }
