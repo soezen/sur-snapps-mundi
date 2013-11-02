@@ -1,0 +1,35 @@
+body {
+    font-family: Verdana,monospace;
+}
+
+.header {
+    background-color: #269abc;
+    width: 100%;
+    margin: auto;
+    padding: 5px 5px 0;
+}
+
+.header h1 {
+    color: white;
+    font-family: Verdana,monospace;
+    font-weight: bold;
+}
+
+.menu {
+    font-weight: bold;
+    border-bottom: 5px double #269abc;
+    overflow: auto;
+    padding-bottom: 5px;
+    padding-left: 10px;
+}
+.menu ul li a {
+    color: #333333;
+}
+
+.content {
+
+}
+
+.footer {
+
+}
