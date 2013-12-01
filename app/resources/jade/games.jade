@@ -1,0 +1,16 @@
+h2 Players waiting
+div
+    ul
+        each player in self.players
+            li= player.name
+
+div
+    input(type='button', onclick='sur.snapps.html.loadContent("games")', class='btn btn-primary' value='Refresh')
+
+div.unregistered
+    form#registerWaitingUser(action='waitForGame', method='POST')
+        input(type='text', id='username', name='username', required)
+        input(type='button', onclick='sur.snapps.mundi.user.register()', class='btn btn-primary', value='Wait')
+
+script.
+    sur.snapps.mundi.user.init();
