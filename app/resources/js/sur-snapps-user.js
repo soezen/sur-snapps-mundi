@@ -20,6 +20,11 @@
         if (isRegistered()) {
             $(".unregistered").hide();
         }
+
+        setTimeout(function() {
+            console.log('refreshing');
+            html.loadContent('games');
+        }, 30000);
     };
 
     user.unregister = function() {

@@ -1,14 +1,24 @@
 h2 Players waiting
 div
-    ul
-        each player in self.players
-            li= player.name
-
-div
-    input(type='button', onclick='sur.snapps.html.loadContent("games")', class='btn btn-primary' value='Refresh')
+    table.table.table-striped
+        thead
+            tr
+                th
+                th User
+                th # Games Won
+                th # Games Lost
+        tbody
+            each player in self.players
+                tr
+                    td
+                        input(type='button', value='play', class='btn btn-primary', onclick='sur.snapps.mundi.startGame(player.name)')
+                    td= player.name
+                    td= player.nbrGamesWon
+                    td= player.nbrGamesLost
 
 div.unregistered
     form#registerWaitingUser(action='waitForGame', method='POST')
+        label(for='username') Username
         input(type='text', id='username', name='username', required)
         input(type='button', onclick='sur.snapps.mundi.user.register()', class='btn btn-primary', value='Wait')
 
