@@ -48,6 +48,10 @@
         html.submitForm(formName);
     };
 
+    user.getCurrentUser = function() {
+        return currentUser;
+    };
+
     function isRegistered() {
         return util.isDefined(currentUser);
     }
