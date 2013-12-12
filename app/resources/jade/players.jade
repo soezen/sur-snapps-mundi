@@ -1,0 +1,39 @@
+h3 Users online
+
+div
+    table.table.table-striped
+        thead
+            tr
+                th User
+                th # Games Won
+                th # Games Lost
+                th
+        tbody#playersTable
+            tr(data-template='player-row')
+                td(data-content='name')
+                td(data-content='nbrGamesWon')
+                td(data-content='nbrGamesLost')
+                td
+                    input(type='button', value='Play', class='btn btn-default', onclick='sur.snapps.mundi.requestGame(this)', data-action='play')
+                    span(data-action='accept') Request Received
+                    input(type='button', value='Accept', class='btn btn-primary', onclick='sur.snapps.mundi.acceptRequest(this)', data-action='accept')
+                    span(data-action='requested') Request Sent
+                    input(type='button', value='Revoke', class='btn btn-default', onclick='sur.snapps.mundi.revokeRequest(this)', data-action='requested')
+            each player in self.players
+                tr(data-player='#{player.name}')
+                    td= player.name
+                    td= player.nbrGamesWon
+                    td= player.nbrGamesLost
+                    td
+                        input(type='button', value='Play', class='btn btn-default', onclick='sur.snapps.mundi.requestGame(this)', data-action='play')
+                        span(data-action='accept') Request Received
+                        input(type='button', value='Accept', class='btn btn-primary', onclick='sur.snapps.mundi.acceptGame(this)', data-action='accept')
+                        span(data-action='requested') Request Sent
+                        input(type='button', value='Revoke', class='btn btn-default', onclick='sur.snapps.mundi.revokeRequest(this)', data-action='requested')
+
+script.
+    $("#playersTable").find("[data-player=" + sur.snapps.mundi.user.getCurrentUser().username+ "]").hide();
+    $("#playersTable").find("[data-action=accept]").hide();
+    $("#playersTable").find("[data-action=requested]").hide();
+    $("[data-template]").hide();
+    sur.snapps.mundi.user.loadRequests();

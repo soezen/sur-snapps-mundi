@@ -4,6 +4,7 @@
    "dependencies" :
     {
         "formidable" : "*",
-        "jade" : "*"
+        "jade" : "*",
+        "socket.io": "*"
     }
 }

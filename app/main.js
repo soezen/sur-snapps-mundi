@@ -1,8 +1,22 @@
 
-var server = require('./node_modules/server');
 var router = require('./node_modules/router');
-var handlers = require('./node_modules/handlers');
+var logger = require('./node_modules/logger');
+var app = require('http').createServer(handler);
+var io = require('socket.io').listen(app.listen(process.env.PORT || 8124), { log: false });
+var url = require('url');
+var socketHandler = require('./node_modules/socket-handler');
 
-var port = process.env.PORT || 8124;
-server.start(router.route, handlers.handle, port);
+logger.setLevel(logger.INFO);
+
+function handler(request, response) {
+    logger.debug('Request received: ' + request.url);
+    var pathname = url.parse(request.url).pathname;
+
+    router.route(pathname, request, response);
+}
+
+io.sockets.on('connection', function(socket) {
+    socketHandler.handle(socket);
+});
+
 

@@ -1,0 +1,12 @@
+h3 User Login
+
+div#loginForm
+    div.form-horizontal
+        div.form-group
+            label.col-xs-2.control-label(for='username') name
+            div.col-xs-5
+                input#username(type='text', name='username', class='form-control')
+        div.form-group
+
+            div.col-xs-5.col-xs-offset-2
+                input(type='button', class='btn btn-primary', value='login', onclick='sur.snapps.mundi.user.login()')

@@ -27,14 +27,15 @@ var sur = sur || {};
 
     var html = sur.namespace("sur.snapps.html");
 
-    html.loadContent = function(input) {
-        console.log('loading content of page');
+    html.loadContent = function(input, callback) {
         $.ajax({
             url: input,
             context: $("div.content")
         }).done(function(data) {
-                console.log($(this));
            $(this).html(data);
+            if (sur.snapps.util.isDefined(callback)) {
+                callback();
+            }
         });
     };
 

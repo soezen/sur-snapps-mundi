@@ -1,0 +1,33 @@
+doctype html
+html
+    head
+        title sur.snapps
+        link(rel='stylesheet', type='text/css', href='bootstrap.min.css')
+        link(rel='stylesheet', type='text/css', href='sur.snapps.css')
+        script(type='text/javascript', src='jquery-2.0.3.min.js')
+        script(type='text/javascript', src='jquery-form.js')
+        script(type='text/javascript', src='bootstrap.min.js')
+        script(type='text/javascript', src='/socket.io/socket.io.js')
+        script(type='text/javascript', src='sur-snapps-core.js')
+        script(type='text/javascript', src='sur-snapps-util.js')
+        script(type='text/javascript', src='sur-snapps-user.js')
+        script(type='text/javascript', src='sur-snapps-mundi.js')
+    body
+        div.container
+            div.header
+                h1 SUR.snapps
+            div.menu
+                ul.list-inline
+                    each item in self.menu.items
+                        li(data-roles='#{item.roles}')
+                            a(href='#', onclick='sur.snapps.html.loadContent("#{item.key}")') #{item.label}
+                    li(data-roles='user')
+                        a(href='#', onclick='sur.snapps.mundi.user.logout()') Logout
+            div.content
+                div#content
+                    h3 Dashboard
+                    // TODO SUR load jade page in backend
+            div.footer
+
+script.
+    sur.snapps.mundi.user.init();
