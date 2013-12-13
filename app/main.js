@@ -17,6 +17,7 @@ function handler(request, response) {
 
 io.sockets.on('connection', function(socket) {
     socketHandler.handle(socket);
+    socketHandler.setIo(io);
 });
 
 

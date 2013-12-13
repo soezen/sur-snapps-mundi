@@ -81,6 +81,10 @@
             delete currentUser.requests[request.requester];
             user.showActionsForPlayer(request.requester, 'play');
         });
+        socket.on('request-accepted-' + username, function(data) {
+            html.loadContent('game');
+            user.connect('http://localhost:8124' + data.gameName);
+        });
     }
 
     function showHideMenuItems() {
@@ -111,6 +115,13 @@
 
     user.getSocket = function() {
         return socket;
+    };
+
+    user.connect = function(url) {
+        if (util.isDefined(socket)) {
+            socket.disconnect();
+        }
+        socket = io.connect(url);
     };
 
     function isLoggedIn() {
