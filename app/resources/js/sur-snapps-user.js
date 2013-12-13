@@ -21,7 +21,7 @@
             roles: ['user'],
             requests: {}
         };
-        socket = io.connect('http://localhost:8124', { 'force new connection' : true });
+        socket = io.connect(window.location.origin, { 'force new connection' : true });
         socket.emit('login', currentUser);
 
         registerEvents(currentUser.username);
@@ -29,7 +29,7 @@
     };
     user.logout = function() {
         if (!util.isDefined(socket)) {
-            socket = io.connect('http://localhost:8124');
+            socket = io.connect(window.location.origin);
         }
         currentUser = undefined;
         socket.disconnect();
@@ -83,7 +83,7 @@
         });
         socket.on('request-accepted-' + username, function(data) {
             html.loadContent('game');
-            user.connect('http://localhost:8124' + data.gameName);
+            user.connect(window.location.origin + data.gameName);
         });
     }
 

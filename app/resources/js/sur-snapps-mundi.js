@@ -36,7 +36,7 @@
     mundi.acceptRequest = function(input) {
         var opponent = user.getPlayerName(input);
         var gameName = '/game-' + user.getCurrentUser().username + '-vs-' + opponent;
-        var url = 'http://localhost:8124' + gameName;
+        var url = window.location.origin + gameName;
         user.getSocket().emit('accept-request', {
             opponent: opponent,
             gameName: gameName
