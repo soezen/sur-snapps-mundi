@@ -4,7 +4,8 @@
     "dependencies": {
         "formidable": "*",
         "jade": "*",
-        "socket.io": "*"
+        "socket.io": "*",
+        "jasmine-node": "*"
     },
     "scripts": {
         "test": "jasmine-node test/spec"
