@@ -1,6 +1,9 @@
 h3 Game X vs Y
 
-input(value='test', onclick='sur.snapps.mundi.test()', type='button')
+div#game-view
+
+input(type='button', value='Move', onmousedown='sur.snapps.mundi.startMoving()', onmouseup='sur.snapps.mundi.stopMoving()')
+input(type='button', value='Shoot', onclick='sur.snapps.mundi.shoot()')
 
 script.
     sur.snapps.mundi.startGame();

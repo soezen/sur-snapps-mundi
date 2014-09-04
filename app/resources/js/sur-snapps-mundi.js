@@ -48,9 +48,29 @@
     mundi.startGame = function() {
         var socket = user.getSocket();
         socket.emit('ready', { username: user.getCurrentUser().username });
-        socket.on('test', function(data) {
-            console.log('test: ' + data.username);
+
+        socket.on('update-view', mundi.updateView);
+    };
+
+    mundi.shoot = function() {
+        user.getSocket().emit('shoot');
+    };
+    mundi.startMoving = function() {
+        user.getSocket().emit('move-start', {
+            direction: 'UP'
         });
+    };
+    mundi.stopMoving = function() {
+        user.getSocket().emit('move-stop');
+    };
+
+    mundi.updateView = function(view) {
+        var stage = new Kinetic.Stage({
+            container: 'game-view',
+            width: 500,
+            height: 500
+        });
+        console.log(view);
     };
 
     mundi.setGameName = function(name) {

@@ -1,10 +1,12 @@
 {
-  "name" : "mundi",
-  "version" : "0.0.1",
-   "dependencies" :
-    {
-        "formidable" : "*",
-        "jade" : "*",
+    "name": "mundi",
+    "version": "0.0.1",
+    "dependencies": {
+        "formidable": "*",
+        "jade": "*",
         "socket.io": "*"
+    },
+    "scripts": {
+        "test": "jasmine-node test/spec"
     }
 }
